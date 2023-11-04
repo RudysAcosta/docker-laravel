@@ -4,7 +4,7 @@ services:
   nginx:
     build:
       context: .
-      dockerfile: .clound/nginx.prod.dockerfile
+      dockerfile: .cloud/nginx.prod.dockerfile
     ports:
       - 80:80
       - 443:443
@@ -14,4 +14,4 @@ services:
   php:
     build:
       context: .
-      dockerfile: .clound/php.prod.dockerfile
+      dockerfile: .cloud/php.prod.dockerfile
