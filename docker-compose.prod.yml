@@ -3,8 +3,8 @@ version: '3.8'
 services:
   nginx:
     build:
-      context: .
-      dockerfile: .cloud/nginx.prod.dockerfile
+      context: .cloud/
+      dockerfile: nginx.prod.dockerfile
     ports:
       - 80:80
       - 443:443
@@ -13,5 +13,11 @@ services:
       - php
   php:
     build:
-      context: .
-      dockerfile: .cloud/php.prod.dockerfile
+      context: .cloud/
+      dockerfile: php.prod.dockerfile
+  assets:
+    image: node:current-alpine
+    volumes:
+      - ./src:/var/www/hrml
+    command: ["/bin/sh", "-c", "npm install && npm run production"]
+    working_dir: /var/www/html
